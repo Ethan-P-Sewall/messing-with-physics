@@ -6,8 +6,9 @@ public class controllableCharacter : MonoBehaviour
 {
     public static List<controllableCharacter> existingCharacters;
 
-    [SerializeField] GameObject selector;
     [SerializeField] GameObject projectile;
+    [SerializeField] int moveDist = 1;
+    public int jumpDist { get; private set; } = 3;
     bool selected = false;
 
     void Start()
@@ -27,26 +28,18 @@ public class controllableCharacter : MonoBehaviour
         }
         selected = true;
         GameManager.instance.CleanThisUp("Selector");
-        SpawnSelector(new Vector3(1.5f, 6, 0));
-        SpawnSelector(new Vector3(0.75f, 6, -1.5f));
-        SpawnSelector(new Vector3(-1.5f, 6, 0));
-        SpawnSelector(new Vector3(0.75f, 6, 1.5f));
-        SpawnSelector(new Vector3(-0.75f, 6, 1.5f));
-        SpawnSelector(new Vector3(-0.75f, 6, -1.5f));
+        SpawnSelector(moveDist);
     }
-    void SpawnSelector(Vector3 pos)
-    {
-        Instantiate(selector, transform.position + pos, Quaternion.identity).GetComponent<selector>().SetCharacter(this);
-    }
+
     public void Launch()
     {
-        if(selected)
+        if (selected)
         {
             selected = false;
             GameManager.instance.CleanThisUp("Selector");
             GameObject foo = Instantiate(projectile, transform.position + (Vector3.up * 0.5f), transform.rotation);
             Vector3 v = cube.lastClickedOn.position;
-            if(v.y < transform.position.y)
+            if (v.y < transform.position.y)
             {
                 v.y += 0.5f;
             }
@@ -63,6 +56,15 @@ public class controllableCharacter : MonoBehaviour
         foreach (controllableCharacter foo in existingCharacters)
         {
             foo.Launch();
+        }
+    }
+
+    void SpawnSelector(int amount)
+    {
+        GameObject foo = Instantiate(GameManager.instance.GetSelector(amount-1), transform.position + (Vector3.up)*6, Quaternion.identity);
+        for (int i = 0; i < foo.transform.childCount; i++)
+        {
+            foo.transform.GetChild(i).gameObject.GetComponent<selector>().SetCharacter(this);
         }
     }
 }

@@ -6,6 +6,8 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
+    [SerializeField] GameObject[] selectors;
+
     void Start()
     {
         instance = this;   
@@ -18,5 +20,10 @@ public class GameManager : MonoBehaviour
         {
             Destroy(foo[i]);
         }
+    }
+
+    public GameObject GetSelector(int index)
+    {
+        return selectors[index];
     }
 }

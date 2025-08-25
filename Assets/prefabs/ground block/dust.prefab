@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 8336691111879755412}
   - component: {fileID: -2242566227945499679}
   - component: {fileID: 3651081409190092342}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: dust
   m_TagString: ground
   m_Icon: {fileID: 0}

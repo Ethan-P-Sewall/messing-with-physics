@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8336691111879755414}
   - component: {fileID: 8336691111879755415}
   - component: {fileID: 8336691111879755412}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: debris
   m_TagString: ground
   m_Icon: {fileID: 0}
