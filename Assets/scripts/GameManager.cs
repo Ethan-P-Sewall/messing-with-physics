@@ -8,9 +8,13 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] GameObject[] selectors;
 
+    public enum GameState {Outside, Player, Enemy}
+    public GameState currentState { get; private set; } = GameState.Outside;
+
     void Start()
     {
-        instance = this;   
+        instance = this;
+        StartTurn();//debug
     }
 
     public void CleanThisUp(string _this_)
@@ -21,9 +25,19 @@ public class GameManager : MonoBehaviour
             Destroy(foo[i]);
         }
     }
-
     public GameObject GetSelector(int index)
     {
         return selectors[index];
+    }
+
+    public void StartTurn()
+    {
+        currentState = GameState.Player;
+        controllableCharacter.BeginTurn();
+    }
+
+    public void EndTurn()
+    {
+        currentState = GameState.Enemy;
     }
 }

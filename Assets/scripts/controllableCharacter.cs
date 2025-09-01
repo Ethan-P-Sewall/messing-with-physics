@@ -5,11 +5,27 @@ using UnityEngine;
 public class controllableCharacter : MonoBehaviour
 {
     public static List<controllableCharacter> existingCharacters;
+    public static void LaunchTarget()
+    {
+        foreach (controllableCharacter foo in existingCharacters)
+        {
+            foo.Launch();
+        }
+    }
+    public static void BeginTurn()
+    {
+        foreach (controllableCharacter foo in existingCharacters)
+        {
+            foo.BecomeSelectable();
+        }
+    }
 
+    [SerializeField] SpriteRenderer myHat;//todo: hat customization
     [SerializeField] GameObject projectile;
     [SerializeField] int moveDist = 1;
     public int jumpDist { get; private set; } = 3;
-    bool selected = false;
+     public bool selectable { get; private set; } = false;
+    bool moved; bool launched; bool selected = false;
 
     void Start()
     {
@@ -22,46 +38,84 @@ public class controllableCharacter : MonoBehaviour
 
     void OnMouseUpAsButton()
     {
-        foreach (controllableCharacter foo in existingCharacters)
+        if (selectable)
         {
-            foo.Unselect();
+            foreach (controllableCharacter foo in existingCharacters)
+            {
+                foo.Unselect();
+            }
+            selected = true;
+            myHat.transform.localScale = new Vector3(2.5f, 2.5f, myHat.transform.localScale.z);
+            GameManager.instance.CleanThisUp("Selector");
+            if (!moved)
+            {
+                SpawnSelector(moveDist);
+            }
         }
-        selected = true;
+    }
+
+    public void Moving(Vector3 position)
+    {
+        transform.position = position;
         GameManager.instance.CleanThisUp("Selector");
-        SpawnSelector(moveDist);
+        moved = true;
+        if (launched && moved)
+        {
+            selected = false;
+            FinishedMyTurn();
+        }
     }
 
     public void Launch()
     {
         if (selected)
         {
-            selected = false;
-            GameManager.instance.CleanThisUp("Selector");
-            GameObject foo = Instantiate(projectile, transform.position + (Vector3.up * 0.5f), transform.rotation);
-            Vector3 v = cube.lastClickedOn.position;
-            if (v.y < transform.position.y)
+            if (!launched)
             {
-                v.y += 0.5f;
+                GameObject foo = Instantiate(projectile, transform.position + (Vector3.up * 0.5f), transform.rotation);
+                Vector3 v = TargetableObject.lastClickedOn.position;
+                if (v.y < transform.position.y)
+                {
+                    v.y += 0.5f;
+                }
+                foo.transform.LookAt(v);
             }
-            foo.transform.LookAt(v);
+
+            launched = true;
+            if (launched && moved)
+            {
+                selected = false;
+                FinishedMyTurn();
+            }
+
         }
     }
+
     public void Unselect()
     {
         selected = false;
+        myHat.transform.localScale = new Vector3(1.4f, 1.4f, myHat.transform.localScale.z);
     }
 
-    public static void TargetBlock()
+    public void BecomeSelectable()
     {
-        foreach (controllableCharacter foo in existingCharacters)
-        {
-            foo.Launch();
-        }
+        myHat.color = Color.blue;
+        selectable = true;
+        moved = false;
+        launched = false;
+    }
+
+    public void FinishedMyTurn()
+    {
+        Unselect();
+        GameManager.instance.CleanThisUp("Selector");
+        selectable = false;
+        myHat.color = Color.white;
     }
 
     void SpawnSelector(int amount)
     {
-        GameObject foo = Instantiate(GameManager.instance.GetSelector(amount-1), transform.position + (Vector3.up)*6, Quaternion.identity);
+        GameObject foo = Instantiate(GameManager.instance.GetSelector(amount - 1), transform.position + (Vector3.up) * 6, Quaternion.identity);
         for (int i = 0; i < foo.transform.childCount; i++)
         {
             foo.transform.GetChild(i).gameObject.GetComponent<selector>().SetCharacter(this);

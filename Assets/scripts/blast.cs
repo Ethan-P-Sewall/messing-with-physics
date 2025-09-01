@@ -16,6 +16,10 @@ public class blast : MonoBehaviour
             {
                 foo[i].gameObject.GetComponent<cube>().GetExploded(transform.position - (Vector3.up * Radius * 0.5f), force, Radius);
             }
+            else if(foo[i].gameObject.GetComponent<ExplodableObject>())
+            {
+                foo[i].gameObject.GetComponent<ExplodableObject>().GetExploded(transform.position - (Vector3.up * Radius * 0.5f), force, Radius);
+            }
         }
         Destroy(gameObject);
     }

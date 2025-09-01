@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 8336691111879755414}
   - component: {fileID: 8336691111879755415}
   - component: {fileID: 8336691111879755412}
+  - component: {fileID: -7377456736435604362}
   m_Layer: 8
   m_Name: _piece
   m_TagString: ground
@@ -128,3 +129,15 @@ MonoBehaviour:
   debrisLevel: 2
   debris: {fileID: 8336691111879755413, guid: 68df9635a3d9f1f40bbef10553c4fba0, type: 3}
   debrisOffset: 0.125
+--- !u!114 &-7377456736435604362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8336691111879755413}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f7bc71459d923b4abb43bd59b7bbc81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -6,10 +6,7 @@ public class cube : MonoBehaviour
 {
     public static List<cube> existingCubes;
 
-    public static Transform lastClickedOn;
-
     public Rigidbody RB { get; private set; }
-
     [SerializeField] float debrisLevel; bool alreadyExploded = false;
     [SerializeField] GameObject debris;
     [SerializeField] float debrisOffset; float failsafe = 0;
@@ -43,12 +40,6 @@ public class cube : MonoBehaviour
     void Update()
     {
         failsafe += Time.deltaTime;
-    }
-
-    void OnMouseUpAsButton()
-    {
-        lastClickedOn = transform;
-        controllableCharacter.TargetBlock();
     }
 
     public void GetExploded(Vector3 v, float force, float rad)

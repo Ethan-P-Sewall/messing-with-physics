@@ -16,8 +16,7 @@ public class selector : MonoBehaviour
     {
         if (clickable)
         {
-            moveThis.transform.position = transform.position + Vector3.up;
-            GameManager.instance.CleanThisUp("Selector");
+            moveThis.Moving(transform.position + Vector3.up);
         }
     }
 
