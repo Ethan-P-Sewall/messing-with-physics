@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
     [SerializeField] GameObject[] selectors;
+    [SerializeField] Image canvasImage;
+    [SerializeField] Sprite[] images;
 
     public enum GameState {Outside, Player, Enemy}
     public GameState currentState { get; private set; } = GameState.Outside;
@@ -14,7 +17,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         instance = this;
-        StartTurn();//debug
+        StartPlayerTurn();//debug
     }
 
     public void CleanThisUp(string _this_)
@@ -30,14 +33,17 @@ public class GameManager : MonoBehaviour
         return selectors[index];
     }
 
-    public void StartTurn()
+    public void StartPlayerTurn()
     {
         currentState = GameState.Player;
         controllableCharacter.BeginTurn();
+        canvasImage.sprite = images[0];
     }
 
-    public void EndTurn()
+    public void EndPlayerTurn()
     {
         currentState = GameState.Enemy;
+        canvasImage.sprite = images[1];
+        EnemyBehavior.EnemyTurn();
     }
 }

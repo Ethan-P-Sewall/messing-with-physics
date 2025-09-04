@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class controllableCharacter : MonoBehaviour
 {
-    public static List<controllableCharacter> existingCharacters;
+    public static List<controllableCharacter> existingCharacters { get; private set; }
+    public static void Initialize()
+    {
+        existingCharacters = new List<controllableCharacter>();
+    }
     public static void LaunchTarget()
     {
         foreach (controllableCharacter foo in existingCharacters)
@@ -19,6 +23,18 @@ public class controllableCharacter : MonoBehaviour
             foo.BecomeSelectable();
         }
     }
+    public static bool isTurnFinished()
+    {
+        bool foo = true;
+        foreach (controllableCharacter bar in existingCharacters)
+        {
+            if(bar.selectable)
+            {
+                foo = false;
+            }
+        }
+        return foo;
+    }
 
     [SerializeField] SpriteRenderer myHat;//todo: hat customization
     [SerializeField] GameObject projectile;
@@ -31,7 +47,7 @@ public class controllableCharacter : MonoBehaviour
     {
         if (existingCharacters == null)
         {
-            existingCharacters = new List<controllableCharacter>();
+            Initialize();
         }
         existingCharacters.Add(this);
     }
@@ -111,6 +127,10 @@ public class controllableCharacter : MonoBehaviour
         GameManager.instance.CleanThisUp("Selector");
         selectable = false;
         myHat.color = Color.white;
+        if(isTurnFinished())
+        {
+            GameManager.instance.EndPlayerTurn();
+        }
     }
 
     void SpawnSelector(int amount)
