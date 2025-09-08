@@ -22,6 +22,7 @@ public class controllableCharacter : MonoBehaviour
         {
             foo.BecomeSelectable();
         }
+        unitSelect = 0;
     }
     public static bool isTurnFinished()
     {
@@ -38,15 +39,30 @@ public class controllableCharacter : MonoBehaviour
     //todo:scroll through units
     public static void NextUnit()
     {
-        for (int i = 0; i < existingCharacters.Count; i++)
+        foreach (controllableCharacter foo in existingCharacters)
         {
-            if(existingCharacters[i].selectable)
+            foo.Unselect();
+        }
+        GameManager.instance.CleanThisUp("Selector");
+        if (unitSelect >= existingCharacters.Count)
+        {
+            unitSelect = 0;
+        }
+        for (int i = unitSelect; i < existingCharacters.Count; i++)
+        {
+            if (existingCharacters[i].selectable)
             {
                 existingCharacters[i].SelectMe();
+                unitSelect = i + 1;
                 i = 9999;
+            }
+            else
+            {
+                unitSelect++;
             }
         }
     }
+    static int unitSelect;
 
     [SerializeField] SpriteRenderer myHat;//todo: hat customization
     [SerializeField] CastLauncher[] casters;//orb/larm/rarm
