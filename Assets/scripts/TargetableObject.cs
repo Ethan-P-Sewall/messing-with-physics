@@ -9,6 +9,6 @@ public class TargetableObject : MonoBehaviour
     void OnMouseUpAsButton()
     {
         lastClickedOn = transform;
-        controllableCharacter.LaunchTarget();
+        controllableCharacter.TriggerALaunch();
     }
 }

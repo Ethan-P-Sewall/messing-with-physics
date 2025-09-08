@@ -9,7 +9,7 @@ public class controllableCharacter : MonoBehaviour
     {
         existingCharacters = new List<controllableCharacter>();
     }
-    public static void LaunchTarget()
+    public static void TriggerALaunch()
     {
         foreach (controllableCharacter foo in existingCharacters)
         {
@@ -28,19 +28,31 @@ public class controllableCharacter : MonoBehaviour
         bool foo = true;
         foreach (controllableCharacter bar in existingCharacters)
         {
-            if(bar.selectable)
+            if (bar.selectable)
             {
                 foo = false;
             }
         }
         return foo;
     }
+    //todo:scroll through units
+    public static void NextUnit()
+    {
+        for (int i = 0; i < existingCharacters.Count; i++)
+        {
+            if(existingCharacters[i].selectable)
+            {
+                existingCharacters[i].SelectMe();
+                i = 9999;
+            }
+        }
+    }
 
     [SerializeField] SpriteRenderer myHat;//todo: hat customization
-    [SerializeField] GameObject projectile;
+    [SerializeField] CastLauncher[] casters;//orb/larm/rarm
     [SerializeField] int moveDist = 1;
     public int jumpDist { get; private set; } = 3;
-     public bool selectable { get; private set; } = false;
+    public bool selectable { get; private set; } = false;
     bool moved; bool launched; bool selected = false;
 
     void Start()
@@ -54,6 +66,11 @@ public class controllableCharacter : MonoBehaviour
 
     void OnMouseUpAsButton()
     {
+        SelectMe();
+    }
+
+    public void SelectMe()
+    {
         if (selectable)
         {
             foreach (controllableCharacter foo in existingCharacters)
@@ -65,7 +82,30 @@ public class controllableCharacter : MonoBehaviour
             GameManager.instance.CleanThisUp("Selector");
             if (!moved)
             {
-                SpawnSelector(moveDist);
+                int howManyLegs = 0;
+
+                if (PartExists(CraftComponent.ComponentPart.LLeg))
+                {
+                    howManyLegs++;
+                }
+                if (PartExists(CraftComponent.ComponentPart.RLeg))
+                {
+                    howManyLegs++;
+                }
+
+                switch (howManyLegs)
+                {
+                    case 0:
+                        moved = true;
+                        break;
+                    case 1:
+                        SpawnSelector(1);
+                        break;
+                    case 2:
+                        SpawnSelector(moveDist);
+                        break;
+                }
+
             }
         }
     }
@@ -88,13 +128,16 @@ public class controllableCharacter : MonoBehaviour
         {
             if (!launched)
             {
-                GameObject foo = Instantiate(projectile, transform.position + (Vector3.up * 0.5f), transform.rotation);
-                Vector3 v = TargetableObject.lastClickedOn.position;
-                if (v.y < transform.position.y)
+                casters[0].Launch();
+
+                if (PartExists(CraftComponent.ComponentPart.LArm))
                 {
-                    v.y += 0.5f;
+                    casters[1].Launch();
                 }
-                foo.transform.LookAt(v);
+                if (PartExists(CraftComponent.ComponentPart.RArm))
+                {
+                    casters[2].Launch();
+                }
             }
 
             launched = true;
@@ -127,7 +170,7 @@ public class controllableCharacter : MonoBehaviour
         GameManager.instance.CleanThisUp("Selector");
         selectable = false;
         myHat.color = Color.white;
-        if(isTurnFinished())
+        if (isTurnFinished())
         {
             GameManager.instance.EndPlayerTurn();
         }
@@ -140,5 +183,37 @@ public class controllableCharacter : MonoBehaviour
         {
             foo.transform.GetChild(i).gameObject.GetComponent<selector>().SetCharacter(this);
         }
+    }
+
+    bool PartExists(CraftComponent.ComponentPart part)
+    {
+        bool foo = false;
+        CraftComponent[] parts = GetComponentsInChildren<CraftComponent>();
+
+        foreach (CraftComponent bar in parts)
+        {
+            if (bar.WhatPart() == part)
+            {
+                foo = true;
+            }
+        }
+
+        return foo;
+    }
+
+    public void OrbFail()
+    {
+        CraftComponent[] parts = GetComponentsInChildren<CraftComponent>();
+
+        foreach (CraftComponent bar in parts)
+        {
+            bar.TakeDamage(9999);
+        }
+        existingCharacters.Remove(this);
+        if (existingCharacters.Count == 0)
+        {
+            //game over logic;
+        }
+        Destroy(gameObject);
     }
 }

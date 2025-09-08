@@ -15,4 +15,9 @@ public class ExplodableObject : MonoBehaviour
     {
         RB.AddExplosionForce(power * forceMultiplier, pos, dist);
     }
+
+    public void SET(int set)
+    {
+        forceMultiplier = set;
+    }
 }

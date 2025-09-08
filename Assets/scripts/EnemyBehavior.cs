@@ -39,7 +39,7 @@ public class EnemyBehavior : MonoBehaviour
         existingEnemies.Add(this);
     }
 
-    public void GetPrompted()
+    public void GetPrompted()//todo: add a delay
     {
         GetComponent<Rigidbody>().AddForce(Vector3.up * 5, ForceMode.Impulse);
         ImDone();

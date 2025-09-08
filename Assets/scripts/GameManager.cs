@@ -20,6 +20,17 @@ public class GameManager : MonoBehaviour
         StartPlayerTurn();//debug
     }
 
+    void Update()
+    {
+        if(currentState == GameState.Player)
+        {
+            if(Input.GetButtonDown("Next Unit"))
+            {
+                controllableCharacter.NextUnit();
+            }
+        }
+    }
+
     public void CleanThisUp(string _this_)
     {
         GameObject[] foo = GameObject.FindGameObjectsWithTag(_this_);

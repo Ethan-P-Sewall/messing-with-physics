@@ -42,6 +42,7 @@ public class cube : MonoBehaviour
         failsafe += Time.deltaTime;
     }
 
+    //todo: HP system
     public void GetExploded(Vector3 v, float force, float rad)
     {
         if (!alreadyExploded)
