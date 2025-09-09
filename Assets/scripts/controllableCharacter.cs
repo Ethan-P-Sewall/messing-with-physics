@@ -9,11 +9,11 @@ public class controllableCharacter : MonoBehaviour
     {
         existingCharacters = new List<controllableCharacter>();
     }
-    public static void TriggerALaunch()
+    public static void TriggerALaunch(Vector3 pos)
     {
         foreach (controllableCharacter foo in existingCharacters)
         {
-            foo.Launch();
+            foo.Launch(pos);
         }
     }
     public static void BeginTurn()
@@ -138,21 +138,21 @@ public class controllableCharacter : MonoBehaviour
         }
     }
 
-    public void Launch()
+    public void Launch(Vector3 pos)
     {
         if (selected)
         {
             if (!launched)
             {
-                casters[0].Launch();
+                casters[0].Launch(pos);
 
                 if (PartExists(CraftComponent.ComponentPart.LArm))
                 {
-                    casters[1].Launch();
+                    casters[1].Launch(pos);
                 }
                 if (PartExists(CraftComponent.ComponentPart.RArm))
                 {
-                    casters[2].Launch();
+                    casters[2].Launch(pos);
                 }
             }
 

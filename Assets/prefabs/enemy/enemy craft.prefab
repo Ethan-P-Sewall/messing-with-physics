@@ -10,13 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 4469872456370382109}
   - component: {fileID: 4469872456370382108}
-  - component: {fileID: 4469872456370382082}
   - component: {fileID: 4469872456370382081}
-  - component: {fileID: 4469872456370382110}
   - component: {fileID: 4837127782020573665}
   - component: {fileID: 9121453262267259928}
-  - component: {fileID: 8749036870502438499}
-  - component: {fileID: 2954930824668602742}
+  - component: {fileID: 3486681435840589338}
+  - component: {fileID: 2128522465483673681}
   m_Layer: 0
   m_Name: orb
   m_TagString: Untagged
@@ -94,22 +92,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!54 &4469872456370382082
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4469872456370382080}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 3
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 112
-  m_CollisionDetection: 0
 --- !u!135 &4469872456370382081
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -123,19 +105,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.25
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &4469872456370382110
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4469872456370382080}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 33d2fbb58913ca04d874d9096a632b21, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  forceMultiplier: 20
 --- !u!114 &4837127782020573665
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -163,7 +132,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   launchThis: {fileID: 8037984918538904543, guid: facf6edd9d980aa4d8e78a155e991156, type: 3}
---- !u!114 &8749036870502438499
+--- !u!114 &3486681435840589338
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -175,7 +144,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d86d8e00d02bed428591f3f1bed23fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &2954930824668602742
+--- !u!114 &2128522465483673681
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -295,11 +264,11 @@ SpringJoint:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4469872456397649434}
-  m_ConnectedBody: {fileID: 4469872456370382082}
+  m_ConnectedBody: {fileID: 3598175307648626172}
   m_ConnectedArticulationBody: {fileID: 0}
   m_Anchor: {x: 0, y: 2.5599997, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0, y: 13.584, z: 0.000000059604645}
+  m_ConnectedAnchor: {x: -7, y: 8.176409, z: -4.3208}
   serializedVersion: 2
   m_Spring: 50
   m_Damper: 0.2
@@ -435,11 +404,11 @@ SpringJoint:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4469872456620273040}
-  m_ConnectedBody: {fileID: 4469872456370382082}
+  m_ConnectedBody: {fileID: 3598175307648626172}
   m_ConnectedArticulationBody: {fileID: 0}
   m_Anchor: {x: 0, y: 2.5599997, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -6.999998, y: 5.5840015, z: -0.000000059604645}
+  m_ConnectedAnchor: {x: -7.7, y: 7.4835887, z: -4.7208}
   serializedVersion: 2
   m_Spring: 100
   m_Damper: 0.2
@@ -588,11 +557,11 @@ SpringJoint:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4469872457498387026}
-  m_ConnectedBody: {fileID: 4469872456370382082}
+  m_ConnectedBody: {fileID: 3598175307648626172}
   m_ConnectedArticulationBody: {fileID: 0}
   m_Anchor: {x: 0, y: 2.5599997, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 6.999998, y: 5.5840015, z: -0.000000059604645}
+  m_ConnectedAnchor: {x: -6.3, y: 7.4835887, z: -4.7208}
   serializedVersion: 2
   m_Spring: 100
   m_Damper: 0.2
@@ -754,11 +723,11 @@ SpringJoint:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4469872457664305000}
-  m_ConnectedBody: {fileID: 4469872456370382082}
+  m_ConnectedBody: {fileID: 3598175307648626172}
   m_ConnectedArticulationBody: {fileID: 0}
   m_Anchor: {x: 0, y: 2.5599997, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -4.000001, y: -5.4160013, z: 0.000000029802322}
+  m_ConnectedAnchor: {x: -7.4, y: 6.5309606, z: -5.2708}
   serializedVersion: 2
   m_Spring: 300
   m_Damper: 0.2
@@ -907,11 +876,11 @@ SpringJoint:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4469872457725895658}
-  m_ConnectedBody: {fileID: 4469872456370382082}
+  m_ConnectedBody: {fileID: 3598175307648626172}
   m_ConnectedArticulationBody: {fileID: 0}
   m_Anchor: {x: 0, y: 2.5599997, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 4.000001, y: -5.4160013, z: 0.000000029802322}
+  m_ConnectedAnchor: {x: -6.6, y: 6.5309606, z: -5.2708}
   serializedVersion: 2
   m_Spring: 300
   m_Damper: 0.2
@@ -947,8 +916,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4469872458189165287}
+  - component: {fileID: 3598175307648626172}
+  - component: {fileID: 9092184768990437301}
   m_Layer: 0
-  m_Name: enemyCraft
+  m_Name: enemy craft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -969,3 +940,32 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &3598175307648626172
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4469872458189165286}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 1
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
+--- !u!114 &9092184768990437301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4469872458189165286}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33d2fbb58913ca04d874d9096a632b21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  forceMultiplier: 200

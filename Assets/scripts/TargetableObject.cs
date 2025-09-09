@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class TargetableObject : MonoBehaviour
 {
-    public static Transform lastClickedOn;
+    public static Vector3 lastClickedOnPos;
 
     void OnMouseUpAsButton()
     {
-        lastClickedOn = transform;
-        controllableCharacter.TriggerALaunch();
+        lastClickedOnPos = transform.position;
+        controllableCharacter.TriggerALaunch(lastClickedOnPos);
     }
 }

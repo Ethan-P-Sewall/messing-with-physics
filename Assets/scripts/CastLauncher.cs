@@ -6,14 +6,15 @@ public class CastLauncher : MonoBehaviour
 {
     [SerializeField] GameObject launchThis;
 
-    public void Launch()
+    public void Launch(Vector3 pos)
     {
         GameObject foo = Instantiate(launchThis, transform.position + (Vector3.up * 0.5f), transform.rotation);
-        Vector3 v = TargetableObject.lastClickedOn.position;
-        if (v.y < transform.position.y)
+        //if (pos.y < transform.position.y)
         {
-            v.y += 0.5f;
+           // pos.y += 0.5f;
         }
-        foo.transform.LookAt(v);
+        //foo.transform.LookAt(pos);
+        foo.GetComponent<ProjectileMotion>().Initialize();
+        foo.GetComponent<ProjectileMotion>().SetTarget(pos);
     }
 }
