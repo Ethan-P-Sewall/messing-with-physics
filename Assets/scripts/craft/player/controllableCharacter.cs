@@ -89,6 +89,7 @@ public class controllableCharacter : MonoBehaviour
     {
         if (selectable)
         {
+            GetComponent<Rigidbody>().velocity = Vector3.zero;
             foreach (controllableCharacter foo in existingCharacters)
             {
                 foo.Unselect();

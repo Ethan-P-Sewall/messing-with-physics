@@ -13,21 +13,44 @@ public class GameManager : MonoBehaviour
 
     public enum GameState {Outside, Player, Enemy}
     public GameState currentState { get; private set; } = GameState.Outside;
+    bool enemyQueued, playerQueued;
 
     void Start()
     {
+
         Application.targetFrameRate = 60;
         instance = this;
-        StartPlayerTurn();//debug
+        StartPlayerTurn();//todo: wrap this into the game loop
     }
 
     void Update()
     {
-        if(currentState == GameState.Player)
+        if (currentState == GameState.Player)
         {
-            if(Input.GetButtonDown("Next Unit"))
+            if (Input.GetButtonDown("Next Unit"))
             {
                 controllableCharacter.NextUnit();
+            }
+        }
+
+        if (enemyQueued)
+        {
+            if (GameObject.FindGameObjectsWithTag("PlayerCast").Length < 1)
+            {
+                currentState = GameState.Enemy;
+                canvasImage.sprite = images[1];
+                EnemyBehavior.EnemyTurn();
+                enemyQueued = false;
+            }
+        }
+        else if (playerQueued)
+        {
+            if (GameObject.FindGameObjectsWithTag("EnemyCast").Length < 1)
+            {
+                currentState = GameState.Player;
+                canvasImage.sprite = images[0];
+                controllableCharacter.BeginTurn();
+                playerQueued = false;
             }
         }
     }
@@ -54,8 +77,6 @@ public class GameManager : MonoBehaviour
 
     public void EndPlayerTurn()
     {
-        currentState = GameState.Enemy;
-        canvasImage.sprite = images[1];
-        EnemyBehavior.EnemyTurn();
+        enemyQueued = true;
     }
 }

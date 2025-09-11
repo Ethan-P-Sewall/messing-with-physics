@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 4469872456370382081}
   - component: {fileID: 4837127782020573665}
   - component: {fileID: 9121453262267259928}
-  - component: {fileID: 3486681435840589338}
   m_Layer: 0
   m_Name: orb
   m_TagString: Untagged
@@ -81,7 +80,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 6b97bb3e40e8bf84d8c0ff8a5c23cd34, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -130,19 +129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9278ede1e848914887e7265acc8284e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  launchThis: {fileID: 8037984918538904543, guid: facf6edd9d980aa4d8e78a155e991156, type: 3}
---- !u!114 &3486681435840589338
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4469872456370382080}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d86d8e00d02bed428591f3f1bed23fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  launchThis: {fileID: 8037984918538904543, guid: ea118220bfdb1014c9ac9773c8ab8846, type: 3}
 --- !u!1 &4469872456397649434
 GameObject:
   m_ObjectHideFlags: 0
@@ -218,7 +205,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 63cca9a7847fc2c4696fd7b7e5b41ccf, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -255,7 +242,7 @@ SpringJoint:
   m_ConnectedArticulationBody: {fileID: 0}
   m_Anchor: {x: 0, y: 2.5599997, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -7, y: 8.176409, z: -4.3208}
+  m_ConnectedAnchor: {x: 0, y: 0.55564195, z: 0.32080013}
   serializedVersion: 2
   m_Spring: 50
   m_Damper: 0.2
@@ -358,7 +345,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 8c32f6492cc568b4c8794a3148f9ed08, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -395,7 +382,7 @@ SpringJoint:
   m_ConnectedArticulationBody: {fileID: 0}
   m_Anchor: {x: 0, y: 2.5599997, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -7.7, y: 7.4835887, z: -4.7208}
+  m_ConnectedAnchor: {x: -0.7, y: 0.48358852, z: 0.27920005}
   serializedVersion: 2
   m_Spring: 100
   m_Damper: 0.2
@@ -434,7 +421,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9278ede1e848914887e7265acc8284e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  launchThis: {fileID: 8037984918538904543, guid: facf6edd9d980aa4d8e78a155e991156, type: 3}
+  launchThis: {fileID: 8037984918538904543, guid: 7e1ea3a9d6542c3468e3c0c1e0382cdc, type: 3}
 --- !u!1 &4469872457498387026
 GameObject:
   m_ObjectHideFlags: 0
@@ -511,7 +498,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 8c32f6492cc568b4c8794a3148f9ed08, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -548,7 +535,7 @@ SpringJoint:
   m_ConnectedArticulationBody: {fileID: 0}
   m_Anchor: {x: 0, y: 2.5599997, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -6.3, y: 7.4835887, z: -4.7208}
+  m_ConnectedAnchor: {x: 0.7, y: 0.48358852, z: 0.27920005}
   serializedVersion: 2
   m_Spring: 100
   m_Damper: 0.2
@@ -587,7 +574,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9278ede1e848914887e7265acc8284e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  launchThis: {fileID: 8037984918538904543, guid: facf6edd9d980aa4d8e78a155e991156, type: 3}
+  launchThis: {fileID: 8037984918538904543, guid: 7e1ea3a9d6542c3468e3c0c1e0382cdc, type: 3}
 --- !u!1 &4469872457664305000
 GameObject:
   m_ObjectHideFlags: 0
@@ -664,7 +651,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: dcebececcc48de94487e2781de333567, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -714,7 +701,7 @@ SpringJoint:
   m_ConnectedArticulationBody: {fileID: 0}
   m_Anchor: {x: 0, y: 2.5599997, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -7.4, y: 6.5309606, z: -5.2708}
+  m_ConnectedAnchor: {x: -0.4, y: -0.46903938, z: -0.27080008}
   serializedVersion: 2
   m_Spring: 300
   m_Damper: 0.2
@@ -817,7 +804,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: dcebececcc48de94487e2781de333567, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -867,7 +854,7 @@ SpringJoint:
   m_ConnectedArticulationBody: {fileID: 0}
   m_Anchor: {x: 0, y: 2.5599997, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -6.6, y: 6.5309606, z: -5.2708}
+  m_ConnectedAnchor: {x: 0.4, y: -0.46903938, z: -0.27080008}
   serializedVersion: 2
   m_Spring: 300
   m_Damper: 0.2
@@ -906,6 +893,7 @@ GameObject:
   - component: {fileID: 3598175307648626172}
   - component: {fileID: 9092184768990437301}
   - component: {fileID: 117035189464170607}
+  - component: {fileID: 2062337507814656783}
   m_Layer: 0
   m_Name: enemy craft
   m_TagString: Untagged
@@ -969,3 +957,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f7bc71459d923b4abb43bd59b7bbc81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2062337507814656783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4469872458189165286}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d86d8e00d02bed428591f3f1bed23fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveDist: 2
+  casters:
+  - {fileID: 9121453262267259928}
+  - {fileID: 2768819698738970193}
+  - {fileID: 2743853721067957239}

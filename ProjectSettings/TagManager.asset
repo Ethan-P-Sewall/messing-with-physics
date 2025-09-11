@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Selector
   - ground
+  - PlayerCast
+  - EnemyCast
   layers:
   - Default
   - TransparentFX

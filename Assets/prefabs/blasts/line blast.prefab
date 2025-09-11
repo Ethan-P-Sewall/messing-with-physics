@@ -15,9 +15,10 @@ GameObject:
   - component: {fileID: 8037984918538904486}
   - component: {fileID: 9207516310388338288}
   - component: {fileID: 2659250764445765548}
+  - component: {fileID: 7285235473320313393}
   m_Layer: 7
   m_Name: line blast
-  m_TagString: Untagged
+  m_TagString: PlayerCast
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -127,7 +128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a293f0841f4a9042a8671b93d4395ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 10
   heightMod: 1
   path: 1
 --- !u!136 &2659250764445765548
@@ -144,3 +145,17 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 2
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &7285235473320313393
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8037984918538904543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8fee0bfc382c304d9fa0229cf0fd2c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShouldSleep: 0
+  timer: 5

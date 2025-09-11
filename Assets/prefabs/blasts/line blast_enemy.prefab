@@ -13,11 +13,11 @@ GameObject:
   - component: {fileID: 8037984918538904483}
   - component: {fileID: 8037984918538904480}
   - component: {fileID: 8037984918538904486}
-  - component: {fileID: 9046612664610507430}
   - component: {fileID: 9207516310388338288}
-  - component: {fileID: 8032726302501060445}
+  - component: {fileID: 2659250764445765548}
+  - component: {fileID: 7285235473320313393}
   m_Layer: 7
-  m_Name: arc blast
+  m_Name: line blast_enemy
   m_TagString: PlayerCast
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32,7 +32,7 @@ Transform:
   m_GameObject: {fileID: 8037984918538904543}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 20, z: 0}
-  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
+  m_LocalScale: {x: 0.125, y: 0.125, z: 0.5}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -116,19 +116,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
---- !u!135 &9046612664610507430
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8037984918538904543}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &9207516310388338288
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -143,8 +130,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   heightMod: 1
-  path: 0
---- !u!114 &8032726302501060445
+  path: 1
+--- !u!136 &2659250764445765548
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8037984918538904543}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 1
+  m_Direction: 2
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &7285235473320313393
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

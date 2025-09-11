@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 9207516310388338288}
   - component: {fileID: 8032726302501060445}
   m_Layer: 7
-  m_Name: arc blast
+  m_Name: arc blast_enemy
   m_TagString: PlayerCast
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
