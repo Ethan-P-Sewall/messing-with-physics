@@ -2771,7 +2771,7 @@ GameObject:
   - component: {fileID: 5901275890395139793}
   m_Layer: 9
   m_Name: movement 3
-  m_TagString: Untagged
+  m_TagString: Selector
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -42,7 +42,7 @@ public class cube : MonoBehaviour
         failsafe += Time.deltaTime;
     }
 
-    //todo: HP system
+    //todo: HP system, these should probably also be textured
     public void GetExploded(Vector3 v, float force, float rad)
     {
         if (!alreadyExploded)

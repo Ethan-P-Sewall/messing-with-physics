@@ -36,7 +36,7 @@ public class controllableCharacter : MonoBehaviour
         }
         return foo;
     }
-    //todo:scroll through units
+
     public static void NextUnit()
     {
         foreach (controllableCharacter foo in existingCharacters)
