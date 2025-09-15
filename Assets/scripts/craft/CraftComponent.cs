@@ -5,7 +5,7 @@ using UnityEngine;
 public class CraftComponent : MonoBehaviour
 {
     public enum ComponentPart { Orb, Hat, LArm, RArm, LLeg, RLeg }
-    [SerializeField] int maxHP; public int currentHP { get; private set; }
+    [SerializeField] int maxHP; public float currentHP { get; private set; }
     [SerializeField] ComponentPart whatPart;
 
     void Start()
@@ -14,39 +14,44 @@ public class CraftComponent : MonoBehaviour
     }
 
     //todo: orb ignores damage when hat is present
-    public void TakeDamage(int damage)
+    public void TakeDamage(float damage)
     {
-        currentHP -= damage;
-
-        if (currentHP <= 0)
+        if (currentHP > 0)
         {
-            if (gameObject.GetComponent<SpringJoint>())
+            currentHP -= damage;
+            if (currentHP <= 0)
             {
-                Destroy(gameObject.GetComponent<SpringJoint>());
+                if (gameObject.GetComponent<SpringJoint>())
+                {
+                    Destroy(gameObject.GetComponent<SpringJoint>());
+                }
+                if (gameObject.GetComponent<CastLauncher>())
+                {
+                    Destroy(gameObject.GetComponent<CastLauncher>());
+                }
+                if (whatPart == ComponentPart.Orb)
+                {
+                    if (transform.parent.GetComponent<controllableCharacter>())
+                    {
+                        transform.parent.GetComponent<controllableCharacter>().OrbFail();
+                    }
+                    else if (transform.parent.GetComponent<EnemyBehavior>())
+                    {
+                        transform.parent.GetComponent<EnemyBehavior>().OrbFail();
+                    }
+                    gameObject.AddComponent<Rigidbody>();
+                }
+                transform.parent = null;
+                GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+                gameObject.AddComponent<ExplodableObject>();
+                gameObject.GetComponent<ExplodableObject>().SET(10);
+                Destroy(this);
             }
-            if (gameObject.GetComponent<CastLauncher>())
-            {
-                Destroy(gameObject.GetComponent<CastLauncher>());
-            }
-            if (whatPart == ComponentPart.Orb)
-            {
-                transform.parent.GetComponent<controllableCharacter>().OrbFail();
-            }
-            transform.parent = null;
-            GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
-            gameObject.AddComponent<ExplodableObject>();
-            gameObject.GetComponent<ExplodableObject>().SET(40);
-            Destroy(this);
         }
     }
 
     public ComponentPart WhatPart()
     {
         return whatPart;
-    }
-
-    [ContextMenu("EXPLODE")]void EXPLODE()
-    {
-        TakeDamage(9999);
     }
 }

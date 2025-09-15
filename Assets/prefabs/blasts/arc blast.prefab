@@ -98,8 +98,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcd431d704dbf68449316a276594adfb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Radius: 3
+  Radius: 5
   force: 100
+  damage: 100
+  forceFalloff: 0.1
+  damageFalloff: 0.1
+  spread:
+  - 0.25
+  - 0.25
+  - 0.25
+  - 0.25
 --- !u!54 &8037984918538904486
 Rigidbody:
   m_ObjectHideFlags: 0

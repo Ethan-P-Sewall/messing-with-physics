@@ -166,4 +166,20 @@ public class EnemyBehavior : MonoBehaviour
 
         return foo;
     }
+
+    public void OrbFail()
+    {
+        CraftComponent[] parts = GetComponentsInChildren<CraftComponent>();
+
+        foreach (CraftComponent bar in parts)
+        {
+            bar.TakeDamage(9999);
+        }
+        existingEnemies.Remove(this);
+        if (existingEnemies.Count == 0)
+        {
+            //level finished logic;
+        }
+        Destroy(gameObject);
+    }
 }

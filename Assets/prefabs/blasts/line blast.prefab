@@ -100,6 +100,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Radius: 3
   force: 100
+  damage: 100
+  forceFalloff: 0.5
+  damageFalloff: 0.5
+  spread:
+  - 0.4
+  - 0.3
+  - 0.2
+  - 0.1
 --- !u!54 &8037984918538904486
 Rigidbody:
   m_ObjectHideFlags: 0

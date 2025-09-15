@@ -143,6 +143,7 @@ GameObject:
   - component: {fileID: 4469872456397649430}
   - component: {fileID: 4469872456397649429}
   - component: {fileID: 2107979135287374068}
+  - component: {fileID: 4215826827386620113}
   m_Layer: 10
   m_Name: hat
   m_TagString: Untagged
@@ -269,6 +270,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHP: 100
   whatPart: 1
+--- !u!135 &4215826827386620113
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4469872456397649434}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.25
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4469872456620273040
 GameObject:
   m_ObjectHideFlags: 0
@@ -283,6 +297,7 @@ GameObject:
   - component: {fileID: 4469872456620273043}
   - component: {fileID: 5625371747565102698}
   - component: {fileID: 2768819698738970193}
+  - component: {fileID: 3389850049460832280}
   m_Layer: 10
   m_Name: hand (1)
   m_TagString: Untagged
@@ -422,6 +437,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   launchThis: {fileID: 8037984918538904543, guid: 59d9ebfe965fe9f44adcf94726f45c26, type: 3}
+--- !u!135 &3389850049460832280
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4469872456620273040}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.25
+  m_Center: {x: 0, y: -0.00000011920929, z: 0}
 --- !u!1 &4469872457498387026
 GameObject:
   m_ObjectHideFlags: 0
@@ -436,6 +464,7 @@ GameObject:
   - component: {fileID: 4469872457498387053}
   - component: {fileID: 2605651980921309870}
   - component: {fileID: 2743853721067957239}
+  - component: {fileID: 2123825939903959422}
   m_Layer: 10
   m_Name: hand
   m_TagString: Untagged
@@ -575,6 +604,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   launchThis: {fileID: 8037984918538904543, guid: 59d9ebfe965fe9f44adcf94726f45c26, type: 3}
+--- !u!135 &2123825939903959422
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4469872457498387026}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.25
+  m_Center: {x: 0, y: -0.00000011920929, z: 0}
 --- !u!1 &4469872457664305000
 GameObject:
   m_ObjectHideFlags: 0
@@ -585,10 +627,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4469872457664305001}
   - component: {fileID: 4469872457664305003}
-  - component: {fileID: 4469872457664305002}
   - component: {fileID: 4469872457664304997}
   - component: {fileID: 4469872457664304996}
   - component: {fileID: 3058991292982368581}
+  - component: {fileID: 4119930232524313958}
   m_Layer: 10
   m_Name: leg
   m_TagString: Untagged
@@ -661,19 +703,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!65 &4469872457664305002
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4469872457664305000}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.0664332, y: 4.028549, z: 0.2}
-  m_Center: {x: 1.481166, y: 0.08634567, z: 0}
 --- !u!54 &4469872457664304997
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -728,6 +757,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHP: 100
   whatPart: 4
+--- !u!135 &4119930232524313958
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4469872457664305000}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.25
+  m_Center: {x: 0, y: 0.00000047683716, z: -0.000000029802322}
 --- !u!1 &4469872457725895658
 GameObject:
   m_ObjectHideFlags: 0
@@ -738,10 +780,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4469872457725895659}
   - component: {fileID: 4469872457725895653}
-  - component: {fileID: 4469872457725895652}
   - component: {fileID: 4469872457725895655}
   - component: {fileID: 4469872457725895654}
   - component: {fileID: 7620519495966145791}
+  - component: {fileID: 4592707054742342225}
   m_Layer: 10
   m_Name: leg (1)
   m_TagString: Untagged
@@ -814,19 +856,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!65 &4469872457725895652
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4469872457725895658}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.0664332, y: 4.028549, z: 0.2}
-  m_Center: {x: 1.481166, y: 0.08634567, z: 0}
 --- !u!54 &4469872457725895655
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -881,6 +910,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHP: 100
   whatPart: 5
+--- !u!135 &4592707054742342225
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4469872457725895658}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.25
+  m_Center: {x: 0, y: 0.00000047683716, z: -0.000000029802322}
 --- !u!1 &4469872458189165286
 GameObject:
   m_ObjectHideFlags: 0
@@ -943,7 +985,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33d2fbb58913ca04d874d9096a632b21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  forceMultiplier: 20
+  forceMultiplier: 10
 --- !u!114 &7333718653895047020
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -961,4 +1003,4 @@ MonoBehaviour:
   - {fileID: 9121453262267259928}
   - {fileID: 2768819698738970193}
   - {fileID: 2743853721067957239}
-  moveDist: 4
+  moveDist: 3

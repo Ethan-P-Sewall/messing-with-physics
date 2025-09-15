@@ -224,7 +224,10 @@ public class controllableCharacter : MonoBehaviour
 
         foreach (CraftComponent bar in parts)
         {
-            bar.TakeDamage(9999);
+            if (bar.WhatPart() != CraftComponent.ComponentPart.Orb)
+            {
+                bar.TakeDamage(9999);
+            }
         }
         existingCharacters.Remove(this);
         if (existingCharacters.Count == 0)
