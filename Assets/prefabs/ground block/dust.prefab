@@ -131,6 +131,7 @@ MonoBehaviour:
   debrisLevel: 3
   debris: {fileID: 0}
   debrisOffset: 0
+  MaxHP: 1
 --- !u!114 &-2242566227945499679
 MonoBehaviour:
   m_ObjectHideFlags: 0

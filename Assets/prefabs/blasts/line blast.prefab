@@ -100,7 +100,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Radius: 3
   force: 100
-  damage: 100
+  damage: 20
   forceFalloff: 0.5
   damageFalloff: 0.5
   spread:

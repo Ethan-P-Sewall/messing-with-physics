@@ -24,4 +24,9 @@ public class despawn : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    public void SET(float foo)
+    {
+        timer = foo;
+    }
 }

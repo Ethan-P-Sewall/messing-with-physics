@@ -37,7 +37,7 @@ public class blast : MonoBehaviour
             {
                 if (foo[i].gameObject.GetComponent<cube>())
                 {
-                    foo[i].gameObject.GetComponent<cube>().GetExploded(transform.position - (Vector3.up * Radius * 0.5f), force, Radius);
+                    foo[i].gameObject.GetComponent<cube>().GetExploded(transform.position - (Vector3.up * Radius * 0.5f), force, Radius, damage * spread[0] * GetFalloff(foo[i].transform.position, false));
                 }
                 else if (foo[i].gameObject.GetComponent<ExplodableObject>())
                 {
@@ -46,7 +46,14 @@ public class blast : MonoBehaviour
 
                 if (foo[i].gameObject.GetComponent<CraftComponent>())
                 {
-                    validTargets.Add(foo[i].gameObject.GetComponent<CraftComponent>());
+                    if (gameObject.CompareTag("PlayerCast") && foo[i].gameObject.CompareTag("EnemyComponent"))
+                    {
+                        validTargets.Add(foo[i].gameObject.GetComponent<CraftComponent>());
+                    }
+                    else if (gameObject.CompareTag("EnemyCast") && foo[i].gameObject.CompareTag("PlayerComponent"))
+                    {
+                        validTargets.Add(foo[i].gameObject.GetComponent<CraftComponent>());
+                    }
                 }
             }
             int bar = validTargets.Count;

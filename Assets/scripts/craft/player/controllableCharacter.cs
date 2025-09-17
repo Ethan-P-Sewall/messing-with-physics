@@ -64,7 +64,7 @@ public class controllableCharacter : MonoBehaviour
     }
     static int unitSelect;
 
-    [SerializeField] SpriteRenderer myHat;//todo: hat customization
+    [SerializeField] MeshRenderer select;
     [SerializeField] CastLauncher[] casters;//orb/larm/rarm
     [SerializeField] int moveDist = 1;
     public int jumpDist { get; private set; } = 3;
@@ -95,7 +95,7 @@ public class controllableCharacter : MonoBehaviour
                 foo.Unselect();
             }
             selected = true;
-            myHat.transform.localScale = new Vector3(2.5f, 2.5f, myHat.transform.localScale.z);
+            select.transform.localScale = new Vector3(2f, select.transform.localScale.y, 2f);
             GameManager.instance.CleanThisUp("Selector");
             if (!moved)
             {
@@ -170,12 +170,12 @@ public class controllableCharacter : MonoBehaviour
     public void Unselect()
     {
         selected = false;
-        myHat.transform.localScale = new Vector3(1.4f, 1.4f, myHat.transform.localScale.z);
+        select.transform.localScale = new Vector3(1f, select.transform.localScale.y, 1f);
     }
 
     public void BecomeSelectable()
     {
-        myHat.color = Color.blue;
+        select.enabled = true;
         selectable = true;
         moved = false;
         launched = false;
@@ -186,7 +186,7 @@ public class controllableCharacter : MonoBehaviour
         Unselect();
         GameManager.instance.CleanThisUp("Selector");
         selectable = false;
-        myHat.color = Color.white;
+        select.enabled = false;
         if (isTurnFinished())
         {
             GameManager.instance.EndPlayerTurn();
@@ -202,7 +202,7 @@ public class controllableCharacter : MonoBehaviour
         }
     }
 
-    bool PartExists(CraftComponent.ComponentPart part)
+    public bool PartExists(CraftComponent.ComponentPart part)
     {
         bool foo = false;
         CraftComponent[] parts = GetComponentsInChildren<CraftComponent>();

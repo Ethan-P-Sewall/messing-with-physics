@@ -8,6 +8,8 @@ TagManager:
   - ground
   - PlayerCast
   - EnemyCast
+  - PlayerComponent
+  - EnemyComponent
   layers:
   - Default
   - TransparentFX

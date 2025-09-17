@@ -151,7 +151,7 @@ public class EnemyBehavior : MonoBehaviour
         PromptNextEnemy();
     }
 
-    bool PartExists(CraftComponent.ComponentPart part)
+    public bool PartExists(CraftComponent.ComponentPart part)
     {
         bool foo = false;
         CraftComponent[] parts = GetComponentsInChildren<CraftComponent>();

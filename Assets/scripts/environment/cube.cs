@@ -10,6 +10,7 @@ public class cube : MonoBehaviour
     [SerializeField] float debrisLevel; bool alreadyExploded = false;
     [SerializeField] GameObject debris;
     [SerializeField] float debrisOffset; float failsafe = 0;
+    [SerializeField] int MaxHP; float currentHP;
 
     public static void EnablePhysics()
     {
@@ -28,6 +29,7 @@ public class cube : MonoBehaviour
 
     void Start()
     {
+        currentHP = MaxHP;
         RB = GetComponent<Rigidbody>();
 
         if (existingCubes == null)
@@ -42,117 +44,130 @@ public class cube : MonoBehaviour
         failsafe += Time.deltaTime;
     }
 
-    //todo: HP system, these should probably also be textured
-    public void GetExploded(Vector3 v, float force, float rad)
+    //todo: these should probably be textured default and damaged
+    public void GetExploded(Vector3 v, float force, float rad, float damage)
     {
-        if (!alreadyExploded)
-        {
-            float proximity = ((Vector3.Distance(v, transform.position)) / rad);
+        currentHP -= damage;
 
-            switch (debrisLevel)
+        if (currentHP < 0)
+        {
+            if (!alreadyExploded)
             {
-                case 0:
-                    {
-                        if (proximity < 1.0f && failsafe > 0.25f)
+                float proximity = ((Vector3.Distance(v, transform.position)) / rad);
+
+                switch (debrisLevel)
+                {
+                    case 0:
                         {
-                            alreadyExploded = true;
-                            Vector3 foo = new Vector3(-debrisOffset, -debrisOffset, -debrisOffset);
-                            Instantiate(debris, transform.position + foo, transform.rotation).GetComponent<cube>().GetExploded(v, force, rad); foo.x = debrisOffset;
-                            Instantiate(debris, transform.position + foo, transform.rotation).GetComponent<cube>().GetExploded(v, force, rad); foo.z = debrisOffset; foo.x = -debrisOffset;
-                            Instantiate(debris, transform.position + foo, transform.rotation).GetComponent<cube>().GetExploded(v, force, rad); foo.z = foo.x = debrisOffset;
-                            Instantiate(debris, transform.position + foo, transform.rotation).GetComponent<cube>().GetExploded(v, force, rad); foo.z = foo.x = -debrisOffset; foo.y = debrisOffset;
-                            Instantiate(debris, transform.position + foo, transform.rotation).GetComponent<cube>().GetExploded(v, force, rad); foo.x = debrisOffset;
-                            Instantiate(debris, transform.position + foo, transform.rotation).GetComponent<cube>().GetExploded(v, force, rad); foo.z = debrisOffset; foo.x = -debrisOffset;
-                            Instantiate(debris, transform.position + foo, transform.rotation).GetComponent<cube>().GetExploded(v, force, rad); foo.z = foo.x = debrisOffset;
-                            Instantiate(debris, transform.position + foo, transform.rotation).GetComponent<cube>().GetExploded(v, force, rad);
-                            Destroy(gameObject);
-                        }
-                        else
-                        {
-                            if (!RB)
+                            if (proximity < 1.0f && failsafe > 0.25f)
                             {
-                                RB = GetComponent<Rigidbody>();
+                                alreadyExploded = true;
+                                Vector3 foo = new Vector3(-debrisOffset, -debrisOffset, -debrisOffset);
+                                Instantiate(debris, transform.position + foo, transform.rotation).GetComponent<cube>().GetExploded(v, force, rad, 0); foo.x = debrisOffset;
+                                Instantiate(debris, transform.position + foo, transform.rotation).GetComponent<cube>().GetExploded(v, force, rad, 0); foo.z = debrisOffset; foo.x = -debrisOffset;
+                                Instantiate(debris, transform.position + foo, transform.rotation).GetComponent<cube>().GetExploded(v, force, rad, 0); foo.z = foo.x = debrisOffset;
+                                Instantiate(debris, transform.position + foo, transform.rotation).GetComponent<cube>().GetExploded(v, force, rad, 0); foo.z = foo.x = -debrisOffset; foo.y = debrisOffset;
+                                Instantiate(debris, transform.position + foo, transform.rotation).GetComponent<cube>().GetExploded(v, force, rad, 0); foo.x = debrisOffset;
+                                Instantiate(debris, transform.position + foo, transform.rotation).GetComponent<cube>().GetExploded(v, force, rad, 0); foo.z = debrisOffset; foo.x = -debrisOffset;
+                                Instantiate(debris, transform.position + foo, transform.rotation).GetComponent<cube>().GetExploded(v, force, rad, 0); foo.z = foo.x = debrisOffset;
+                                Instantiate(debris, transform.position + foo, transform.rotation).GetComponent<cube>().GetExploded(v, force, rad, 0);
+                                Destroy(gameObject);
                             }
-                            RB.AddExplosionForce(force, v, rad);
-                        }
-                    }
-                    break;
-                case 1:
-                    {
-                        if (proximity < 0.6f && failsafe > 0.25f)
-                        {
-                            alreadyExploded = true;
-                            Vector3 foo = new Vector3(-debrisOffset, -debrisOffset, -debrisOffset);
-                            Instantiate(debris, transform.position + foo, transform.rotation).GetComponent<cube>().GetExploded(v, force, rad); foo.x = debrisOffset;
-                            Instantiate(debris, transform.position + foo, transform.rotation).GetComponent<cube>().GetExploded(v, force, rad); foo.z = debrisOffset; foo.x = -debrisOffset;
-                            Instantiate(debris, transform.position + foo, transform.rotation).GetComponent<cube>().GetExploded(v, force, rad); foo.z = foo.x = debrisOffset;
-                            Instantiate(debris, transform.position + foo, transform.rotation).GetComponent<cube>().GetExploded(v, force, rad); foo.z = foo.x = -debrisOffset; foo.y = debrisOffset;
-                            Instantiate(debris, transform.position + foo, transform.rotation).GetComponent<cube>().GetExploded(v, force, rad); foo.x = debrisOffset;
-                            Instantiate(debris, transform.position + foo, transform.rotation).GetComponent<cube>().GetExploded(v, force, rad); foo.z = debrisOffset; foo.x = -debrisOffset;
-                            Instantiate(debris, transform.position + foo, transform.rotation).GetComponent<cube>().GetExploded(v, force, rad); foo.z = foo.x = debrisOffset;
-                            Instantiate(debris, transform.position + foo, transform.rotation).GetComponent<cube>().GetExploded(v, force, rad);
-                            Destroy(gameObject);
-                        }
-                        else
-                        {
-                            if (!RB)
+                            else
                             {
-                                RB = GetComponent<Rigidbody>();
+                                if (!RB)
+                                {
+                                    RB = GetComponent<Rigidbody>();
+                                }
+                                RB.AddExplosionForce(force, v, rad);
                             }
-                            RB.AddExplosionForce(force * 2, v, rad);
                         }
-                    }
-                    break;
-                case 2:
-                    {
-                        if (proximity < 0.4f && failsafe > 0.25f)
+                        break;
+                    case 1:
                         {
-                            alreadyExploded = true;
-                            Vector3 foo = new Vector3(-debrisOffset, -debrisOffset, -debrisOffset);
-                            Instantiate(debris, transform.position + foo, transform.rotation).GetComponent<cube>().GetExploded(v, force, rad); foo.x = debrisOffset;
-                            Instantiate(debris, transform.position + foo, transform.rotation).GetComponent<cube>().GetExploded(v, force, rad); foo.z = debrisOffset; foo.x = -debrisOffset;
-                            Instantiate(debris, transform.position + foo, transform.rotation).GetComponent<cube>().GetExploded(v, force, rad); foo.z = foo.x = debrisOffset;
-                            Instantiate(debris, transform.position + foo, transform.rotation).GetComponent<cube>().GetExploded(v, force, rad); foo.z = foo.x = -debrisOffset; foo.y = debrisOffset;
-                            Instantiate(debris, transform.position + foo, transform.rotation).GetComponent<cube>().GetExploded(v, force, rad); foo.x = debrisOffset;
-                            Instantiate(debris, transform.position + foo, transform.rotation).GetComponent<cube>().GetExploded(v, force, rad); foo.z = debrisOffset; foo.x = -debrisOffset;
-                            Instantiate(debris, transform.position + foo, transform.rotation).GetComponent<cube>().GetExploded(v, force, rad); foo.z = foo.x = debrisOffset;
-                            Instantiate(debris, transform.position + foo, transform.rotation).GetComponent<cube>().GetExploded(v, force, rad);
-                            Destroy(gameObject);
-                        }
-                        else
-                        {
-                            if (!RB)
+                            if (proximity < 0.6f && failsafe > 0.25f)
                             {
-                                RB = GetComponent<Rigidbody>();
+                                alreadyExploded = true;
+                                Vector3 foo = new Vector3(-debrisOffset, -debrisOffset, -debrisOffset);
+                                Instantiate(debris, transform.position + foo, transform.rotation).GetComponent<cube>().GetExploded(v, force, rad, 0); foo.x = debrisOffset;
+                                Instantiate(debris, transform.position + foo, transform.rotation).GetComponent<cube>().GetExploded(v, force, rad, 0); foo.z = debrisOffset; foo.x = -debrisOffset;
+                                Instantiate(debris, transform.position + foo, transform.rotation).GetComponent<cube>().GetExploded(v, force, rad, 0); foo.z = foo.x = debrisOffset;
+                                Instantiate(debris, transform.position + foo, transform.rotation).GetComponent<cube>().GetExploded(v, force, rad, 0); foo.z = foo.x = -debrisOffset; foo.y = debrisOffset;
+                                Instantiate(debris, transform.position + foo, transform.rotation).GetComponent<cube>().GetExploded(v, force, rad, 0); foo.x = debrisOffset;
+                                Instantiate(debris, transform.position + foo, transform.rotation).GetComponent<cube>().GetExploded(v, force, rad, 0); foo.z = debrisOffset; foo.x = -debrisOffset;
+                                Instantiate(debris, transform.position + foo, transform.rotation).GetComponent<cube>().GetExploded(v, force, rad, 0); foo.z = foo.x = debrisOffset;
+                                Instantiate(debris, transform.position + foo, transform.rotation).GetComponent<cube>().GetExploded(v, force, rad, 0);
+                                Destroy(gameObject);
                             }
-                            RB.AddExplosionForce(force, v, rad);
-                        }
-                    }
-                    break;
-                case 3:
-                    {
-                        if (proximity < 0.3f)
-                        {
-                            Destroy(gameObject);
-                        }
-                        else
-                        {
-                            if (!RB)
+                            else
                             {
-                                RB = GetComponent<Rigidbody>();
+                                if (!RB)
+                                {
+                                    RB = GetComponent<Rigidbody>();
+                                }
+                                RB.AddExplosionForce(force * 2, v, rad);
                             }
-                            RB.AddExplosionForce(force * 2, v, rad);
                         }
-                    }
-                    break;
-                default:
-                    if (!RB)
-                    {
-                        RB = GetComponent<Rigidbody>();
-                    }
-                    RB.AddExplosionForce(force, v, rad);
-                    break;
+                        break;
+                    case 2:
+                        {
+                            if (proximity < 0.4f && failsafe > 0.25f)
+                            {
+                                alreadyExploded = true;
+                                Vector3 foo = new Vector3(-debrisOffset, -debrisOffset, -debrisOffset);
+                                Instantiate(debris, transform.position + foo, transform.rotation).GetComponent<cube>().GetExploded(v, force, rad, 0); foo.x = debrisOffset;
+                                Instantiate(debris, transform.position + foo, transform.rotation).GetComponent<cube>().GetExploded(v, force, rad, 0); foo.z = debrisOffset; foo.x = -debrisOffset;
+                                Instantiate(debris, transform.position + foo, transform.rotation).GetComponent<cube>().GetExploded(v, force, rad, 0); foo.z = foo.x = debrisOffset;
+                                Instantiate(debris, transform.position + foo, transform.rotation).GetComponent<cube>().GetExploded(v, force, rad, 0); foo.z = foo.x = -debrisOffset; foo.y = debrisOffset;
+                                Instantiate(debris, transform.position + foo, transform.rotation).GetComponent<cube>().GetExploded(v, force, rad, 0); foo.x = debrisOffset;
+                                Instantiate(debris, transform.position + foo, transform.rotation).GetComponent<cube>().GetExploded(v, force, rad, 0); foo.z = debrisOffset; foo.x = -debrisOffset;
+                                Instantiate(debris, transform.position + foo, transform.rotation).GetComponent<cube>().GetExploded(v, force, rad, 0); foo.z = foo.x = debrisOffset;
+                                Instantiate(debris, transform.position + foo, transform.rotation).GetComponent<cube>().GetExploded(v, force, rad, 0);
+                                Destroy(gameObject);
+                            }
+                            else
+                            {
+                                if (!RB)
+                                {
+                                    RB = GetComponent<Rigidbody>();
+                                }
+                                RB.AddExplosionForce(force, v, rad);
+                            }
+                        }
+                        break;
+                    case 3:
+                        {
+                            if (proximity < 0.3f)
+                            {
+                                Destroy(gameObject);
+                            }
+                            else
+                            {
+                                if (!RB)
+                                {
+                                    RB = GetComponent<Rigidbody>();
+                                }
+                                RB.AddExplosionForce(force * 2, v, rad);
+                            }
+                        }
+                        break;
+                    default:
+                        if (!RB)
+                        {
+                            RB = GetComponent<Rigidbody>();
+                        }
+                        RB.AddExplosionForce(force, v, rad);
+                        break;
+                }
             }
+        }
+        else
+        {
+            if (!RB)
+            {
+                RB = GetComponent<Rigidbody>();
+            }
+            RB.AddExplosionForce(force, v, rad);
         }
     }
 

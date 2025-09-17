@@ -129,6 +129,7 @@ MonoBehaviour:
   debrisLevel: 1
   debris: {fileID: 8336691111879755413, guid: d527edeaa2795e747b08ccf6f6cac879, type: 3}
   debrisOffset: 0.25
+  MaxHP: 25
 --- !u!114 &971356915092890139
 MonoBehaviour:
   m_ObjectHideFlags: 0

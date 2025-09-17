@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 7285235473320313393}
   m_Layer: 7
   m_Name: line blast_enemy
-  m_TagString: PlayerCast
+  m_TagString: EnemyCast
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -100,7 +100,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Radius: 3
   force: 100
-  damage: 50
+  damage: 10
   forceFalloff: 1
   damageFalloff: 1
   spread:
